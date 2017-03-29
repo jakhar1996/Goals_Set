@@ -17,10 +17,16 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import include, url
 from django.contrib import admin
+from accounts.views import(login_view, register_view, logout_view, FirstPage)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^goal/', include("Goals.urls")),		
+    url(r'^goal/', include("Goals.urls")),
+    url(r'^register/', register_view, name="register"),
+    url(r'^login/', login_view, name="login"),
+    url(r'^logout/', logout_view, name="logout"),
+    url(r'^', FirstPage, name="first_page")
+
 ]
 
 if settings.DEBUG:
